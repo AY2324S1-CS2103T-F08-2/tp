@@ -165,6 +165,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/yuxunn.md",
+      "headings": {
+        "yu-xun-s-project-portfolio-page": "Yu Xun's Project Portfolio Page",
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "tutorials/AddRemark.md",
       "title": "Tutorial: Adding a command",
       "headings": {
