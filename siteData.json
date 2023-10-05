@@ -138,6 +138,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/liconghuang.md",
+      "headings": {
+        "huang-licong-s-project-portfolio-page": " Huang Licong's Project Portfolio Page",
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "tutorials/AddRemark.md",
       "title": "Tutorial: Adding a command",
       "headings": {
