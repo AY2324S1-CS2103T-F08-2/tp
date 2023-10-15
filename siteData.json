@@ -8,7 +8,7 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "gary": "Gary",
-        "li-cong": "Li Cong",
+        "licong": "Licong",
         "jie-xiang": "Jie Xiang",
         "yu-xun": "Yu Xun",
         "tiffany": "Tiffany"
@@ -117,7 +117,8 @@
         "features": "Features",
         "lead-features": "Lead features",
         "add-lead-coming-soon": "Add lead [Coming soon]",
-        "view-all-leads-coming-soon": "View all leads [Coming soon]",
+        "view-all-clients": "View all clients",
+        "view-all-leads": "View all leads",
         "delete-lead-coming-soon": "Delete lead [Coming soon]",
         "add-meeting-time-for-lead-coming-soon": "Add meeting time for lead [Coming soon]",
         "delete-meeting-time-for-lead-coming-soon": "Delete meeting time for lead [Coming soon]"
