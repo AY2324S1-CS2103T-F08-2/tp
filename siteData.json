@@ -115,12 +115,12 @@
         "definitions": "Definitions",
         "d-a-v-e-tutorial-for-new-users": "D.A.V.E. Tutorial for new users",
         "features": "Features",
-        "lead-features": "Lead features",
-        "add-lead-coming-soon": "Add lead [Coming soon]",
+        "add-lead": "Add lead",
+        "add-client": "Add Client",
         "view-all-clients": "View all clients",
         "view-all-leads": "View all leads",
-        "delete-lead-coming-soon": "Delete lead [Coming soon]",
-        "add-meeting-time-for-lead-coming-soon": "Add meeting time for lead [Coming soon]",
+        "delete-coming-soon": "Delete [Coming soon]",
+        "add-meeting-time-coming-soon": "Add meeting time [Coming soon]",
         "delete-meeting-time-for-lead-coming-soon": "Delete meeting time for lead [Coming soon]"
       },
       "headingKeywords": {}
