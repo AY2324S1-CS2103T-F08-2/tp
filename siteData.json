@@ -69,7 +69,10 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
+        "add-a-client": "Add a client",
+        "add-a-lead": "Add a lead",
+        "edit-a-client-lead": "Edit a client/lead",
+        "deleting-a-client-lead": "Deleting a client/lead",
         "viewing-a-person": "Viewing a person",
         "saving-data": "Saving data"
       },
