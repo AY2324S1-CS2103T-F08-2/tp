@@ -51,6 +51,7 @@
         "storage-component": "Storage component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
+        "view-specific-person-feature": "View Specific Person feature",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-data-archiving": "[Proposed] Data archiving",
         "addclient-addlead-feature": "Addclient/Addlead feature",
@@ -68,6 +69,7 @@
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-person": "Deleting a person",
+        "viewing-a-person": "Viewing a person",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
@@ -122,6 +124,7 @@
         "add-client": "Add Client",
         "view-all-clients": "View all clients",
         "view-all-leads": "View all leads",
+        "view-specific-person": "View Specific Person",
         "delete-coming-soon": "Delete [Coming soon]",
         "add-meeting-time-coming-soon": "Add meeting time [Coming soon]",
         "delete-meeting-time-for-lead-coming-soon": "Delete meeting time for lead [Coming soon]"
