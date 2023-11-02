@@ -131,9 +131,11 @@
         "view-all-clients": "View all clients",
         "view-all-leads": "View all leads",
         "view-specific-person": "View Specific Person",
-        "delete-coming-soon": "Delete [Coming soon]",
-        "add-meeting-time-coming-soon": "Add meeting time [Coming soon]",
-        "delete-meeting-time-for-lead-coming-soon": "Delete meeting time for lead [Coming soon]"
+        "delete": "Delete",
+        "add-meeting-time": "Add meeting time",
+        "delete-meeting-time-for-lead": "Delete meeting time for lead",
+        "convert-lead-to-client": "Convert lead to client",
+        "convert-client-to-lead": "Convert client to lead"
       },
       "headingKeywords": {}
     },
