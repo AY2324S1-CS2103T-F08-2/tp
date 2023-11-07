@@ -136,7 +136,10 @@
         "edit": "Edit",
         "sort-meeting-time": "Sort meeting time",
         "convert-lead-to-client": "Convert lead to client",
-        "convert-client-to-lead": "Convert client to lead"
+        "convert-client-to-lead": "Convert client to lead",
+        "locating-person-by-name": "Locating person by name",
+        "clear": "Clear",
+        "exit-the-program": "Exit the program"
       },
       "headingKeywords": {}
     },
