@@ -434,7 +434,7 @@ from current date to ensure a follow-up by the user.
 
 `The person index provided is invalid`
 
-### Locating person by name
+### Locating persons by name
 - What it does: Finds persons whose names contain any of the given keywords.
 - Command format: `find KEYWORD [MORE_KEYWORDS]`
 - Example usage: `find John David`
@@ -452,7 +452,11 @@ Parameters: KEYWORD [MORE_KEYWORDS]...
 Example: find alice bob charlie``
 
 <box type="info" theme="light">
-The search is case-insensitive. e.g `John` will match `john`. Only full words will be matched e.g. `John` will not match `Johns`. Persons matching at least one keyword will be returned (i.e. OR search). e.g. `find john david` will return `John Doe`, `David Li`
+<ul>
+  <li>The search is case-insensitive. e.g `John` will match `john`.</li>
+  <li>Only full words will be matched e.g. `John` will not match `Johns`.</li>
+  <li>Persons matching at least one keyword will be returned (i.e. OR search). e.g. `find john david` will return `John Doe`, `David Li`.</li>
+</ul>
 </box>
 
 Example usage:
