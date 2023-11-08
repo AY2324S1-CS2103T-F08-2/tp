@@ -139,7 +139,10 @@
         "convert-client-to-lead": "Convert client to lead",
         "locating-person-by-name": "Locating person by name",
         "clear": "Clear",
-        "exit-the-program": "Exit the program"
+        "exit-the-program": "Exit the program",
+        "faq": "FAQ",
+        "known-issues": "Known issues",
+        "command-summary": "Command summary"
       },
       "headingKeywords": {}
     },
