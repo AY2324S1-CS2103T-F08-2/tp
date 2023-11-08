@@ -49,7 +49,7 @@ Here are some descriptions of the words we use throughout the User Guide:
 
 <box type="info" theme="info">
 Extraneous parameters for commands that do not take in parameters (such as help, exit and clear) will be ignored.
-e.g. if the command specifies `exit 2`, it will be interpreted as the `exit` command.
+e.g. if the command specifies <code>exit 2</code>, it will be interpreted as the <code>exit</code> command.
 </box>
 
 ### Add lead
@@ -453,9 +453,9 @@ Example: find alice bob charlie``
 
 <box type="info" theme="light">
 <ul>
-  <li>The search is case-insensitive. e.g `John` will match `john`.</li>
-  <li>Only full words will be matched e.g. `John` will not match `Johns`.</li>
-  <li>Persons matching at least one keyword will be returned (i.e. OR search). e.g. `find john david` will return `John Doe`, `David Li`.</li>
+  <li>The search is case-insensitive. e.g <code>John</code> will match <code>john</code>.</li>
+  <li>Only full words will be matched e.g. <code>John</code> will not match <code>Johns</code>.</li>
+  <li>Persons matching at least one keyword will be returned (i.e. OR search). e.g. <code>find john david</code> will return <code>John Doe, David Li</code>.</li>
 </ul>
 </box>
 
