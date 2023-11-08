@@ -47,9 +47,10 @@ Here are some descriptions of the words we use throughout the User Guide:
 
 # Features
 
-> [!NOTE]
-> Extraneous parameters for commands that do not take in parameters (such as help, exit and clear) will be ignored.
+<box type="info" theme="info">
+Extraneous parameters for commands that do not take in parameters (such as help, exit and clear) will be ignored.
 e.g. if the command specifies `exit 2`, it will be interpreted as the `exit` command.
+</box>
 
 ### Add lead
 
@@ -435,10 +436,10 @@ from current date to ensure a follow-up by the user.
 
 ### Locating person by name
 - What it does: Finds persons whose names contain any of the given keywords.
-- Command format: `find NAME [MORE_NAMES]`
+- Command format: `find KEYWORD [MORE_KEYWORDS]`
 - Example usage: `find John David`
 - Acceptable values for parameter: 
-  - `NAME`: Any name from the list.
+  - `KEYWORD`: Any name from the list.
 - Precise expected output when the command succeeds:
 
 `<NUMBER> persons listed!`
@@ -446,14 +447,13 @@ from current date to ensure a follow-up by the user.
 - Precise expected output when the command fails:
 
 ``Invalid command format!
-find: Finds all persons whose names contain any of the specified names (case-insensitive) and displays them as a list with index numbers.
-Parameters: NAME [MORE_NAMES]...
+find: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
+Parameters: KEYWORD [MORE_KEYWORDS]...
 Example: find alice bob charlie``
 
->[!NOTE]
->-  The search is case-insensitive. e.g `John` will match `john`.
->- Only full words will be matched e.g. `John` will not match `Johns`.
->- Persons matching at least one keyword will be returned (i.e. OR search). e.g. `find john david` will return `John Doe`, `David Li`
+<box type="info" theme="light">
+The search is case-insensitive. e.g `John` will match `john`. Only full words will be matched e.g. `John` will not match `Johns`. Persons matching at least one keyword will be returned (i.e. OR search). e.g. `find john david` will return `John Doe`, `David Li`
+</box>
 
 Example usage:
 
@@ -469,9 +469,12 @@ Example usage:
 
 ### Clear
 - What it does: Clears all entries from the address book.
+
+<box type="info" theme="warning">
+  This command will delete all the data from the address book. This command cannot be reversed. Proceed with caution.
+</box>
+
 - Command format: `clear`.
-> [!WARNING]
-> This command will delete all the data from the address book. This command cannot be reversed. Proceed with caution.
 - Precise expected output when the command succeeds:
 
 `Address book has been cleared!`
