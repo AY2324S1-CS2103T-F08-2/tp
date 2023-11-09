@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EditCommandParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.parser</a> &gt; <span class="el_source">EditCommandParser.java</span></div><h1>EditCommandParser.java</h1><pre class="source lang-java linenums">package seedu.address.logic.parser;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_KEY_MILESTONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditCommand.EditLeadDescriptor;
+import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditLeadCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.tag.Tag;
+
+/**
+ * Parses input arguments and creates a new EditCommand object
+ */
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">public class EditCommandParser implements Parser&lt;EditCommand&gt; {</span>
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the EditCommand
+     * and returns an EditCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public EditCommand parse(String args) throws ParseException {
+<span class="fc" id="L37">        requireNonNull(args);</span>
+<span class="fc" id="L38">        boolean isLead = false;</span>
+<span class="fc" id="L39">        ArgumentMultimap argMultimap =</span>
+<span class="fc" id="L40">                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,</span>
+                        PREFIX_KEY_MILESTONE, PREFIX_MEETING_TIME, PREFIX_TAG);
+
+        Index index;
+
+        try {
+<span class="fc" id="L46">            index = ParserUtil.parseIndex(argMultimap.getPreamble());</span>
+<span class="fc" id="L47">        } catch (ParseException pe) {</span>
+<span class="fc" id="L48">            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);</span>
+<span class="fc" id="L49">        }</span>
+
+<span class="fc" id="L51">        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_KEY_MILESTONE,</span>
+                PREFIX_MEETING_TIME, PREFIX_ADDRESS);
+<span class="fc" id="L53">        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();</span>
+<span class="fc" id="L54">        EditLeadDescriptor editLeadDescriptor = new EditLeadDescriptor();</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_KEY_MILESTONE).isPresent()) {</span>
+<span class="fc" id="L56">            isLead = true;</span>
+<span class="fc" id="L57">            editLeadDescriptor.setKeyMilestone(ParserUtil.parseKeyMilestone(</span>
+<span class="fc" id="L58">                    argMultimap.getValue(PREFIX_KEY_MILESTONE).get()));</span>
+        }
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {</span>
+<span class="fc" id="L62">            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));</span>
+<span class="fc" id="L63">            editLeadDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));</span>
+
+        }
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {</span>
+<span class="fc" id="L67">            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));</span>
+<span class="fc" id="L68">            editLeadDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));</span>
+        }
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {</span>
+<span class="fc" id="L71">            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));</span>
+<span class="fc" id="L72">            editLeadDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));</span>
+        }
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {</span>
+<span class="fc" id="L75">            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));</span>
+<span class="fc" id="L76">            editLeadDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));</span>
+        }
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (argMultimap.getValue(PREFIX_MEETING_TIME).isPresent()) {</span>
+<span class="fc" id="L79">            editPersonDescriptor.setMeetingTime(</span>
+<span class="fc" id="L80">                    Optional.of(ParserUtil.parseMeetingTime(argMultimap.getValue(PREFIX_MEETING_TIME).get())));</span>
+<span class="fc" id="L81">            editLeadDescriptor.setMeetingTime(</span>
+<span class="fc" id="L82">                    Optional.of(ParserUtil.parseMeetingTime(argMultimap.getValue(PREFIX_MEETING_TIME).get())));</span>
+        }
+<span class="fc" id="L84">        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);</span>
+<span class="fc" id="L85">        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editLeadDescriptor::setTags);</span>
+
+<span class="fc bfc" id="L87" title="All 4 branches covered.">        if (!isLead &amp;&amp; !editPersonDescriptor.isAnyFieldEdited()) {</span>
+<span class="fc" id="L88">            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">        } else if (isLead &amp;&amp; !editLeadDescriptor.isAnyFieldEdited()) {</span>
+<span class="nc" id="L90">            throw new ParseException(EditLeadCommand.MESSAGE_NOT_EDITED);</span>
+        }
+        //todo: there is a temporary fix here
+        //temporary fix to not convert lead to client when editing any lead's field
+        //EditLead is only used when the keyMilestone is changed
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        return isLead ? new EditLeadCommand(index, editLeadDescriptor) : new EditCommand(index, editPersonDescriptor);</span>
+    }
+
+    /**
+     * Parses {@code Collection&lt;String&gt; tags} into a {@code Set&lt;Tag&gt;} if {@code tags} is non-empty.
+     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set&lt;Tag&gt;} containing zero tags.
+     */
+    private Optional&lt;Set&lt;Tag&gt;&gt; parseTagsForEdit(Collection&lt;String&gt; tags) throws ParseException {
+<span class="pc bpc" id="L104" title="2 of 4 branches missed.">        assert tags != null;</span>
+
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (tags.isEmpty()) {</span>
+<span class="fc" id="L107">            return Optional.empty();</span>
+        }
+<span class="fc bfc" id="L109" title="All 4 branches covered.">        Collection&lt;String&gt; tagSet = tags.size() == 1 &amp;&amp; tags.contains(&quot;&quot;) ? Collections.emptySet() : tags;</span>
+<span class="fc" id="L110">        return Optional.of(ParserUtil.parseTags(tagSet));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

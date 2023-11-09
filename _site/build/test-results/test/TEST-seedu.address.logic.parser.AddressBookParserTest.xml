@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.logic.parser.AddressBookParserTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.011">
+  <properties/>
+  <testcase name="parseCommand_addMeetingTime()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.001"/>
+  <testcase name="parseCommand_delete()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_unrecognisedInput_throwsParseException()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_edit_withLead()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.003"/>
+  <testcase name="parseCommand_edit_withClient()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_convertClientToLead()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_clear()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_exit()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_find()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_help()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_list()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.001"/>
+  <testcase name="parseCommand_view()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_addLead()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.002"/>
+  <testcase name="parseCommand_convertLeadToClient()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_deleteMeeting()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.001"/>
+  <testcase name="parseCommand_sortMeetingTime()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_listClient()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_listLead()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_addClient()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <testcase name="parseCommand_unknownCommand_throwsParseException()" classname="seedu.address.logic.parser.AddressBookParserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

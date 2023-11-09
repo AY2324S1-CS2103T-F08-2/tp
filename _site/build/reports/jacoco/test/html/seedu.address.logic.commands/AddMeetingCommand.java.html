@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddMeetingCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.commands</a> &gt; <span class="el_source">AddMeetingCommand.java</span></div><h1>AddMeetingCommand.java</h1><pre class="source lang-java linenums">package seedu.address.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
+
+import java.util.List;
+import java.util.Optional;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Client;
+import seedu.address.model.person.Lead;
+import seedu.address.model.person.MeetingTime;
+import seedu.address.model.person.Person;
+
+/**
+ * Adds a new meeting time to the person identified by the displayed index in the address book.
+ */
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">public class AddMeetingCommand extends Command {</span>
+    public static final String COMMAND_WORD = &quot;addmeeting&quot;;
+<span class="fc" id="L25">    public static final String MESSAGE_USAGE = COMMAND_WORD</span>
+            + &quot;: Adds a new meeting time to the person identified by the displayed index in the address book.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer) &quot;
+            + PREFIX_MEETING_TIME + &quot;MEETING_TIME \n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1 m/12/10/2023 16:00&quot;;
+
+    public static final String MESSAGE_ADD_MEETING_SUCCESS = &quot;Added Meeting: %1$s to Person %2$s&quot;;
+    public static final String MESSAGE_MEETING_ALREADY_EXISTS =
+            &quot;Person already has a meeting time, use the edit command instead&quot;;
+
+    private final Index targetIndex;
+    private final MeetingTime meetingTime;
+
+    /**
+     * Adds a meeting to a person.
+     * @param targetIndex of the Person in the filtered list to add a meeting time to
+     * @param meetingTime to be added
+     */
+<span class="fc" id="L43">    public AddMeetingCommand(Index targetIndex, MeetingTime meetingTime) {</span>
+<span class="fc" id="L44">        requireAllNonNull(targetIndex, meetingTime);</span>
+
+<span class="fc" id="L46">        this.targetIndex = targetIndex;</span>
+<span class="fc" id="L47">        this.meetingTime = meetingTime;</span>
+<span class="fc" id="L48">    }</span>
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+<span class="fc" id="L52">        requireNonNull(model);</span>
+<span class="fc" id="L53">        List&lt;Person&gt; lastShownList = model.getFilteredPersonList();</span>
+
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="fc" id="L56">            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);</span>
+        }
+
+<span class="fc" id="L59">        Person personToAddMeeting = lastShownList.get(targetIndex.getZeroBased());</span>
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (personToAddMeeting.getMeetingTime().isPresent()) {</span>
+<span class="fc" id="L62">            throw new CommandException(MESSAGE_MEETING_ALREADY_EXISTS);</span>
+        }
+
+<span class="fc" id="L65">        Person personWithMeetingAdded = addMeeting(personToAddMeeting, meetingTime);</span>
+<span class="fc" id="L66">        model.setPerson(personToAddMeeting, personWithMeetingAdded);</span>
+<span class="fc" id="L67">        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);</span>
+<span class="fc" id="L68">        return new CommandResult(String.format(MESSAGE_ADD_MEETING_SUCCESS,</span>
+<span class="fc" id="L69">                personWithMeetingAdded.getMeetingTimeString(),</span>
+<span class="fc" id="L70">                targetIndex.getOneBased()));</span>
+    }
+
+    /**
+     * Adds a meeting to a person.
+     * @param personToAddMeeting Person to add meeting to.
+     * @return Person with meeting added.
+     */
+    private static Person addMeeting(Person personToAddMeeting, MeetingTime meetingTime) {
+<span class="fc" id="L79">        requireNonNull(personToAddMeeting);</span>
+<span class="pc bpc" id="L80" title="2 of 6 branches missed.">        assert personToAddMeeting.isLead() || personToAddMeeting.isClient();</span>
+<span class="pc bpc" id="L81" title="2 of 4 branches missed.">        assert personToAddMeeting.getMeetingTime().isEmpty();</span>
+
+        Person personWithMeetingAdded;
+
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (personToAddMeeting.isClient()) {</span>
+<span class="fc" id="L86">            personWithMeetingAdded = new Client(</span>
+<span class="fc" id="L87">                    personToAddMeeting.getName(),</span>
+<span class="fc" id="L88">                    personToAddMeeting.getPhone(),</span>
+<span class="fc" id="L89">                    personToAddMeeting.getEmail(),</span>
+<span class="fc" id="L90">                    personToAddMeeting.getAddress(),</span>
+<span class="fc" id="L91">                    Optional.of(meetingTime),</span>
+<span class="fc" id="L92">                    personToAddMeeting.getTags());</span>
+        } else {
+            // If person is not Client, person is a Lead
+<span class="pc bpc" id="L95" title="2 of 4 branches missed.">            assert personToAddMeeting.isLead();</span>
+<span class="fc" id="L96">            Lead leadToAddMeeting = (Lead) personToAddMeeting;</span>
+<span class="fc" id="L97">            personWithMeetingAdded = new Lead(</span>
+<span class="fc" id="L98">                    leadToAddMeeting.getName(),</span>
+<span class="fc" id="L99">                    leadToAddMeeting.getPhone(),</span>
+<span class="fc" id="L100">                    leadToAddMeeting.getEmail(),</span>
+<span class="fc" id="L101">                    leadToAddMeeting.getAddress(),</span>
+<span class="fc" id="L102">                    leadToAddMeeting.getKeyMilestone(),</span>
+<span class="fc" id="L103">                    Optional.of(meetingTime),</span>
+<span class="fc" id="L104">                    leadToAddMeeting.getTags());</span>
+        }
+
+<span class="fc" id="L107">        return personWithMeetingAdded;</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (other == this) {</span>
+<span class="fc" id="L113">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (!(other instanceof AddMeetingCommand)) {</span>
+<span class="fc" id="L118">            return false;</span>
+        }
+
+<span class="fc" id="L121">        AddMeetingCommand otherAddMeetingCommand = (AddMeetingCommand) other;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        return targetIndex.equals(otherAddMeetingCommand.targetIndex)</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">                &amp;&amp; meetingTime.equals(otherAddMeetingCommand.meetingTime);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L128">        return new ToStringBuilder(this)</span>
+<span class="fc" id="L129">                .add(&quot;targetIndex&quot;, targetIndex)</span>
+<span class="fc" id="L130">                .toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

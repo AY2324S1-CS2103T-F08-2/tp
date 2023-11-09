@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeleteMeetingCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.commands</a> &gt; <span class="el_source">DeleteMeetingCommand.java</span></div><h1>DeleteMeetingCommand.java</h1><pre class="source lang-java linenums">package seedu.address.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.util.List;
+import java.util.Optional;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Client;
+import seedu.address.model.person.Lead;
+import seedu.address.model.person.Person;
+
+/**
+ * Deletes a meeting identified using it's displayed index from the address book.
+ */
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">public class DeleteMeetingCommand extends Command {</span>
+
+    public static final String COMMAND_WORD = &quot;deletemeeting&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + &quot;: Deletes the meeting identified by the index number used in the displayed meeting list.\n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer)\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1&quot;;
+
+    public static final String MESSAGE_DELETE_MEETING_SUCCESS = &quot;Deleted Meeting: %1$s from Person %2$s&quot;;
+
+    private final Index targetIndex;
+
+<span class="fc" id="L34">    public DeleteMeetingCommand(Index targetIndex) {</span>
+<span class="fc" id="L35">        this.targetIndex = targetIndex;</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Deletes the meeting from the person.
+     * @param personToDeleteMeeting Person to delete meeting from.
+     * @return Person with meeting deleted.
+     */
+    private static Person deleteMeeting(Person personToDeleteMeeting) {
+<span class="fc" id="L44">        requireNonNull(personToDeleteMeeting);</span>
+<span class="pc bpc" id="L45" title="2 of 6 branches missed.">        assert personToDeleteMeeting.isLead() || personToDeleteMeeting.isClient();</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (personToDeleteMeeting.getMeetingTime().isEmpty()) {</span>
+<span class="fc" id="L48">            return personToDeleteMeeting;</span>
+        }
+
+        Person personWithMeetingDeleted;
+
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (personToDeleteMeeting.isClient()) {</span>
+<span class="fc" id="L54">            personWithMeetingDeleted = new Client(</span>
+<span class="fc" id="L55">                personToDeleteMeeting.getName(),</span>
+<span class="fc" id="L56">                personToDeleteMeeting.getPhone(),</span>
+<span class="fc" id="L57">                personToDeleteMeeting.getEmail(),</span>
+<span class="fc" id="L58">                personToDeleteMeeting.getAddress(),</span>
+<span class="fc" id="L59">                Optional.empty(),</span>
+<span class="fc" id="L60">                personToDeleteMeeting.getTags());</span>
+        } else {
+            // If person is not Client, person is a Lead
+<span class="pc bpc" id="L63" title="2 of 4 branches missed.">            assert personToDeleteMeeting.isLead();</span>
+<span class="fc" id="L64">            Lead leadWithMeetingDeleted = (Lead) personToDeleteMeeting;</span>
+<span class="fc" id="L65">            personWithMeetingDeleted = new Lead(</span>
+<span class="fc" id="L66">                    leadWithMeetingDeleted.getName(),</span>
+<span class="fc" id="L67">                    leadWithMeetingDeleted.getPhone(),</span>
+<span class="fc" id="L68">                    leadWithMeetingDeleted.getEmail(),</span>
+<span class="fc" id="L69">                    leadWithMeetingDeleted.getAddress(),</span>
+<span class="fc" id="L70">                    leadWithMeetingDeleted.getKeyMilestone(),</span>
+<span class="fc" id="L71">                    Optional.empty(),</span>
+<span class="fc" id="L72">                    leadWithMeetingDeleted.getTags());</span>
+        }
+
+<span class="fc" id="L75">        return personWithMeetingDeleted;</span>
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+<span class="fc" id="L80">        requireNonNull(model);</span>
+<span class="fc" id="L81">        List&lt;Person&gt; lastShownList = model.getFilteredPersonList();</span>
+
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="fc" id="L84">            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);</span>
+        }
+
+<span class="fc" id="L87">        Person personToDeleteMeeting = lastShownList.get(targetIndex.getZeroBased());</span>
+<span class="fc" id="L88">        Person personWithMeetingDeleted = deleteMeeting(personToDeleteMeeting);</span>
+<span class="fc" id="L89">        model.setPerson(personToDeleteMeeting, personWithMeetingDeleted);</span>
+<span class="fc" id="L90">        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);</span>
+<span class="fc" id="L91">        return new CommandResult(String.format(MESSAGE_DELETE_MEETING_SUCCESS,</span>
+<span class="fc" id="L92">                personToDeleteMeeting.getMeetingTimeString(),</span>
+<span class="fc" id="L93">                targetIndex.getOneBased()));</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (other == this) {</span>
+<span class="fc" id="L99">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (!(other instanceof DeleteMeetingCommand)) {</span>
+<span class="fc" id="L104">            return false;</span>
+        }
+
+<span class="fc" id="L107">        DeleteMeetingCommand otherDeleteMeetingCommand = (DeleteMeetingCommand) other;</span>
+<span class="fc" id="L108">        return targetIndex.equals(otherDeleteMeetingCommand.targetIndex);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L113">        return new ToStringBuilder(this)</span>
+<span class="fc" id="L114">                .add(&quot;targetIndex&quot;, targetIndex)</span>
+<span class="fc" id="L115">                .toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,12 @@
+{
+  "persons" : [ {
+    "name" : "John Doe",
+    "phone" : "98765432",
+    "email" : "johnd@example.com",
+    "type" : "client",
+    "address" : "311, Clementi Ave 2, #02-25",
+    "keyMilestone" : null,
+    "meetingTime" : "10/10/2023 14:30",
+    "tags" : [ "classmate" ]
+  } ]
+}

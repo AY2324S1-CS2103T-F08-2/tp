@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.logic.commands.AddMeetingCommandTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.005">
+  <properties/>
+  <testcase name="execute_validIndex_success()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.001"/>
+  <testcase name="equals()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <testcase name="constructor_nullArguments_throwsNullPointerException()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <testcase name="toStringMethod()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <testcase name="addMeeting_personIsClientWithoutMeeting_success()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <testcase name="execute_invalidIndex_throwsCommandException()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <testcase name="addMeeting_personIsLeadWithoutMeeting_success()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.001"/>
+  <testcase name="execute_meetingTimeAlreadyPresent_throwsCommandException()" classname="seedu.address.logic.commands.AddMeetingCommandTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

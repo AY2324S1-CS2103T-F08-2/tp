@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Person.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.model.person</a> &gt; <span class="el_source">Person.java</span></div><h1>Person.java</h1><pre class="source lang-java linenums">package seedu.address.model.person;
+
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.tag.Tag;
+
+/**
+ * Represents a Person in the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
+public abstract class Person {
+
+    // Identity fields
+    private final Name name;
+    private final Phone phone;
+    private final Email email;
+    private final Type type;
+
+    // Data fields
+    private final Address address;
+    private final Optional&lt;MeetingTime&gt; meetingTime;
+<span class="fc" id="L29">    private final Set&lt;Tag&gt; tags = new HashSet&lt;&gt;();</span>
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Email email, Type type,
+<span class="fc" id="L35">                  Address address, Optional&lt;MeetingTime&gt; meetingTime, Set&lt;Tag&gt; tags) {</span>
+<span class="fc" id="L36">        requireAllNonNull(name, phone, email, address, meetingTime, tags);</span>
+<span class="fc" id="L37">        this.name = name;</span>
+<span class="fc" id="L38">        this.phone = phone;</span>
+<span class="fc" id="L39">        this.email = email;</span>
+<span class="fc" id="L40">        this.type = type;</span>
+<span class="fc" id="L41">        this.address = address;</span>
+<span class="fc" id="L42">        this.meetingTime = meetingTime;</span>
+<span class="fc" id="L43">        this.tags.addAll(tags);</span>
+<span class="fc" id="L44">    }</span>
+
+    public Name getName() {
+<span class="fc" id="L47">        return name;</span>
+    }
+
+    public Phone getPhone() {
+<span class="fc" id="L51">        return phone;</span>
+    }
+
+    public Email getEmail() {
+<span class="fc" id="L55">        return email;</span>
+    }
+
+    public Type getType() {
+<span class="fc" id="L59">        return type;</span>
+    }
+
+    public Address getAddress() {
+<span class="fc" id="L63">        return address;</span>
+    }
+
+    public Optional&lt;MeetingTime&gt; getMeetingTime() {
+<span class="fc" id="L67">        return meetingTime;</span>
+    }
+    public String getMeetingTimeString() {
+<span class="fc" id="L70">        return meetingTime.map(MeetingTime::toString).orElse(null);</span>
+    }
+
+    public String getMeetingTimeStringForUserInterface() {
+<span class="fc" id="L74">        return meetingTime.map(meetingTime -&gt; &quot;Meeting on: &quot; + meetingTime)</span>
+<span class="fc" id="L75">                .orElse(null);</span>
+    }
+
+    /**
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set&lt;Tag&gt; getTags() {
+<span class="fc" id="L83">        return Collections.unmodifiableSet(tags);</span>
+    }
+
+    /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSamePerson(Person otherPerson) {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (otherPerson == this) {</span>
+<span class="fc" id="L92">            return true;</span>
+        }
+
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        return otherPerson != null</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                &amp;&amp; otherPerson.getName().equals(getName());</span>
+    }
+
+    /**
+     * Returns true if both persons have the same identity and data fields.
+     * This defines a stronger notion of equality between two persons.
+     */
+    @Override
+    public boolean equals(Object other) {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if (other == this) {</span>
+<span class="fc" id="L106">            return true;</span>
+        }
+
+        // instanceof handles nulls
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        if (!(other instanceof Person)) {</span>
+<span class="fc" id="L111">            return false;</span>
+        }
+
+<span class="fc" id="L114">        Person otherPerson = (Person) other;</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        return name.equals(otherPerson.name)</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">                &amp;&amp; phone.equals(otherPerson.phone)</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">                &amp;&amp; email.equals(otherPerson.email)</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">                &amp;&amp; type.equals(otherPerson.type)</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">                &amp;&amp; address.equals(otherPerson.address)</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">                &amp;&amp; meetingTime.equals(otherPerson.meetingTime)</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                &amp;&amp; tags.equals(otherPerson.tags);</span>
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+<span class="nc" id="L127">        return Objects.hash(name, phone, email, type, address, meetingTime, tags);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L132">        return new ToStringBuilder(this)</span>
+<span class="fc" id="L133">                .add(&quot;name&quot;, name)</span>
+<span class="fc" id="L134">                .add(&quot;phone&quot;, phone)</span>
+<span class="fc" id="L135">                .add(&quot;email&quot;, email)</span>
+<span class="fc" id="L136">                .add(&quot;type&quot;, type)</span>
+<span class="fc" id="L137">                .add(&quot;address&quot;, address)</span>
+<span class="fc" id="L138">                .add(&quot;meetingTime&quot;, meetingTime)</span>
+<span class="fc" id="L139">                .add(&quot;tags&quot;, tags)</span>
+<span class="fc" id="L140">                .toString();</span>
+    }
+
+    public abstract boolean isClient();
+
+    public abstract boolean isLead();
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

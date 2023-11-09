@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.storage.StorageManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.003">
+  <properties/>
+  <testcase name="addressBookReadSave()" classname="seedu.address.storage.StorageManagerTest" time="0.002"/>
+  <testcase name="prefsReadSave()" classname="seedu.address.storage.StorageManagerTest" time="0.001"/>
+  <testcase name="getAddressBookFilePath()" classname="seedu.address.storage.StorageManagerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file /var/folders/1j/vsxf1w2n7nbgx01pz_1cq15w0000gn/T/junit9954665078914866186/ab found.
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file /var/folders/1j/vsxf1w2n7nbgx01pz_1cq15w0000gn/T/junit16773351034253954777/prefs found.
+]]></system-err>
+</testsuite>

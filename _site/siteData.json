@@ -1,0 +1,327 @@
+{
+  "enableSearch": true,
+  "pages": [
+    {
+      "src": "404.md",
+      "title": "Page not found",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
+      "src": "README.md",
+      "headings": {
+        "d-a-v-e-d-financial-advisor-expert": "D.A.V.E. (D’financial AdVisor Expert)",
+        "about": "About",
+        "ui": "UI",
+        "getting-started": "Getting Started",
+        "acknowledgements": "Acknowledgements"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "contents/topic1.md",
+      "title": "Topic 1",
+      "headings": {
+        "topic-1": "Topic 1"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "contents/topic2.md",
+      "title": "Topic 2",
+      "headings": {
+        "topic-2": "Topic 2"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "contents/topic3a.md",
+      "title": "Topic 3a",
+      "headings": {
+        "topic-3a": "Topic 3a"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "contents/topic3b.md",
+      "title": "Topic 3b",
+      "headings": {
+        "topic-3b": "Topic 3b"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/AboutUs.md",
+      "title": "About Us",
+      "headings": {
+        "about-us": "About Us",
+        "project-team": "Project team",
+        "gary": "Gary",
+        "licong": "Licong",
+        "jie-xiang": "Jie Xiang",
+        "yu-xun": "Yu Xun",
+        "tiffany": "Tiffany"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/Configuration.md",
+      "title": "Configuration guide",
+      "headings": {
+        "configuration-guide": "Configuration guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/DevOps.md",
+      "title": "DevOps guide",
+      "headings": {
+        "devops-guide": "DevOps guide",
+        "build-automation": "Build automation",
+        "continuous-integration-ci": "Continuous integration (CI)",
+        "code-coverage": "Code coverage",
+        "repository-wide-checks": "Repository-wide checks",
+        "making-a-release": "Making a release"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/DeveloperGuide.md",
+      "title": "Developer Guide",
+      "headings": {
+        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "acknowledgements": "Acknowledgements",
+        "setting-up-getting-started": "Setting up, getting started",
+        "design": "Design",
+        "architecture": "Architecture",
+        "ui-component": "UI component",
+        "logic-component": "Logic component",
+        "model-component": "Model component",
+        "storage-component": "Storage component",
+        "common-classes": "Common classes",
+        "implementation": "Implementation",
+        "view-specific-person-feature": "View Specific Person feature",
+        "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
+        "proposed-data-archiving": "[Proposed] Data archiving",
+        "addclient-addlead-feature": "Addclient/Addlead feature",
+        "proposed-add-meeting-time-feature": "[Proposed] Add Meeting Time feature",
+        "proposed-sort-meeting-time-feature": "[Proposed] Sort Meeting Time feature",
+        "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
+        "appendix-requirements": "Appendix: Requirements",
+        "product-scope": "Product scope",
+        "user-stories": "User stories",
+        "leads": "Leads",
+        "clients": "Clients",
+        "general-information": "General Information",
+        "use-cases": "Use cases",
+        "non-functional-requirements": "Non-Functional Requirements",
+        "glossary": "Glossary",
+        "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
+        "launch-and-shutdown": "Launch and shutdown",
+        "add-a-client": "Add a client",
+        "add-a-lead": "Add a lead",
+        "edit-a-client-lead": "Edit a client/lead",
+        "deleting-a-client-lead": "Deleting a client/lead",
+        "viewing-a-person": "Viewing a person",
+        "converting-a-lead-to-client": "Converting a lead to client",
+        "converting-a-client-to-lead": "Converting a client to lead",
+        "saving-data": "Saving data"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/Documentation.md",
+      "title": "Documentation guide",
+      "headings": {
+        "documentation-guide": "Documentation Guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/Logging.md",
+      "title": "Logging guide",
+      "headings": {
+        "logging-guide": "Logging guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/SettingUp.md",
+      "title": "Setting up and getting started",
+      "headings": {
+        "setting-up-and-getting-started": "Setting up and getting started",
+        "setting-up-the-project-in-your-computer": "Setting up the project in your computer",
+        "before-writing-code": "Before writing code"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/Testing.md",
+      "title": "Testing guide",
+      "headings": {
+        "testing-guide": "Testing guide",
+        "running-tests": "Running tests",
+        "types-of-tests": "Types of tests"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/UserGuide.md",
+      "headings": {
+        "welcome-to-d-a-v-e-d-financial-advisor-expert": "Welcome to D.A.V.E. (D’financial AdVisor Expert)",
+        "table-of-contents": "Table of Contents",
+        "glossary": "Glossary",
+        "quick-start": "Quick Start",
+        "features": "Features",
+        "add-lead": "Add lead",
+        "add-client": "Add client",
+        "view-all-clients": "View all clients",
+        "view-all-leads": "View all leads",
+        "view-specific-person": "View Specific Person",
+        "delete": "Delete",
+        "add-meeting-time": "Add meeting time",
+        "delete-meeting-time": "Delete meeting time",
+        "edit": "Edit",
+        "sort-meeting-time": "Sort meeting time",
+        "convert-lead-to-client": "Convert lead to client",
+        "convert-client-to-lead": "Convert client to lead",
+        "locating-persons-by-name": "Locating persons by name",
+        "clear-address-book": "Clear address book",
+        "exit-the-program": "Exit the program",
+        "faq": "FAQ",
+        "known-issues": "Known issues",
+        "command-summary": "Command summary"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/_markbind/layouts/default.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/_markbind/variables.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/index.md",
+      "title": "",
+      "headings": {
+        "dave": "DAVE"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/garylow2001.md",
+      "title": "Gary's Project Portfolio Page",
+      "headings": {
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/johndoe.md",
+      "title": "John Doe's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/jx124.md",
+      "headings": {
+        "neo-jie-xiang-s-project-portfolio-page": " Neo Jie Xiang's Project Portfolio Page",
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/liconghuang.md",
+      "headings": {
+        "huang-licong-s-project-portfolio-page": " Huang Licong's Project Portfolio Page",
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/tiif.md",
+      "title": "Tiffany's Project Portfolio Page",
+      "headings": {
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/team/yuxunn.md",
+      "headings": {
+        "yu-xun-s-project-portfolio-page": "Yu Xun's Project Portfolio Page",
+        "project-d-a-v-e": "Project: D.A.V.E."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/tutorials/AddRemark.md",
+      "title": "Tutorial: Adding a command",
+      "headings": {
+        "tutorial-adding-a-command": "Tutorial: Adding a command",
+        "create-a-new-remark-command": "Create a new remark command",
+        "hook-remarkcommand-into-the-application": "Hook RemarkCommand into the application",
+        "run-the-application": "Run the application",
+        "change-remarkcommand-to-throw-an-exception": "Change RemarkCommand to throw an exception",
+        "enhancing-remarkcommand": "Enhancing RemarkCommand",
+        "make-the-command-accept-parameters": "Make the command accept parameters",
+        "parse-user-input": "Parse user input",
+        "add-remark-to-the-model": "Add Remark to the model",
+        "add-a-new-remark-class": "Add a new Remark class",
+        "make-use-of-remark": "Make use of Remark",
+        "add-a-placeholder-element-for-remark-to-the-ui": "Add a placeholder element for remark to the UI",
+        "modify-person-to-support-a-remark-field": "Modify Person to support a Remark field",
+        "modify-person": "Modify Person",
+        "update-other-usages-of-person": "Update other usages of Person",
+        "updating-storage": "Updating Storage",
+        "finalizing-the-ui": "Finalizing the UI",
+        "putting-everything-together": "Putting everything together",
+        "update-remarkcommand-and-remarkcommandparser": "Update RemarkCommand and RemarkCommandParser",
+        "writing-tests": "Writing tests",
+        "automatically-generating-tests": "Automatically generating tests",
+        "conclusion": "Conclusion"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/tutorials/RemovingFields.md",
+      "title": "Tutorial: Removing Fields",
+      "headings": {
+        "tutorial-removing-fields": "Tutorial: Removing Fields",
+        "safely-deleting-address": "Safely deleting Address",
+        "assisted-refactoring": "Assisted refactoring",
+        "manual-refactoring": "Manual refactoring",
+        "tidying-up": "Tidying up"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "docs/tutorials/TracingCode.md",
+      "title": "Tutorial: Tracing code",
+      "headings": {
+        "tutorial-tracing-code": "Tutorial: Tracing code",
+        "before-we-start": "Before we start",
+        "setting-a-breakpoint": "Setting a breakpoint",
+        "tracing-the-execution-path": "Tracing the execution path",
+        "conclusion": "Conclusion"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "index.md",
+      "title": "Home Page",
+      "headings": {
+        "what-just-happened": "What just happened?",
+        "navigating-this-site": "Navigating this site",
+        "guide-to-markbind": "Guide to MarkBind"
+      },
+      "headingKeywords": {}
+    }
+  ]
+}

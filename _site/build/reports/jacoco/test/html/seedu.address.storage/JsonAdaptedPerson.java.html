@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonAdaptedPerson.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.storage</a> &gt; <span class="el_source">JsonAdaptedPerson.java</span></div><h1>JsonAdaptedPerson.java</h1><pre class="source lang-java linenums">package seedu.address.storage;
+
+import static seedu.address.model.person.Client.TYPE_CLIENT;
+import static seedu.address.model.person.Lead.TYPE_LEAD;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Client;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.KeyMilestone;
+import seedu.address.model.person.Lead;
+import seedu.address.model.person.MeetingTime;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.Type;
+import seedu.address.model.tag.Tag;
+
+/**
+ * Jackson-friendly version of {@link Person}.
+ */
+class JsonAdaptedPerson {
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = &quot;Person's %s field is missing!&quot;;
+
+    private final String name;
+    private final String phone;
+    private final String email;
+    private final String type;
+    private final String address;
+    private String keyMilestone;
+    private String meetingTime;
+<span class="fc" id="L42">    private final List&lt;JsonAdaptedTag&gt; tags = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     */
+
+    @JsonCreator
+    public JsonAdaptedPerson(@JsonProperty(&quot;name&quot;) String name, @JsonProperty(&quot;phone&quot;) String phone,
+                             @JsonProperty(&quot;email&quot;) String email, @JsonProperty(&quot;type&quot;) String type,
+                             @JsonProperty(&quot;address&quot;) String address,
+                             @JsonProperty(&quot;keyMilestone&quot;) String keyMilestone,
+                             @JsonProperty(&quot;meetingTime&quot;) String meetingTime,
+<span class="fc" id="L54">                             @JsonProperty(&quot;tags&quot;) List&lt;JsonAdaptedTag&gt; tags) {</span>
+<span class="fc" id="L55">        this.name = name;</span>
+<span class="fc" id="L56">        this.phone = phone;</span>
+<span class="fc" id="L57">        this.email = email;</span>
+<span class="fc" id="L58">        this.type = type;</span>
+<span class="fc" id="L59">        this.address = address;</span>
+<span class="fc" id="L60">        this.keyMilestone = keyMilestone;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (meetingTime != null) {</span>
+<span class="fc" id="L62">            this.meetingTime = meetingTime;</span>
+        }
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (tags != null) {</span>
+<span class="fc" id="L65">            this.tags.addAll(tags);</span>
+        }
+<span class="fc" id="L67">    }</span>
+
+    /**
+     * Converts a given {@code Person} into this class for Jackson use.
+     */
+<span class="fc" id="L72">    public JsonAdaptedPerson(Person source) {</span>
+<span class="fc" id="L73">        name = source.getName().fullName;</span>
+<span class="fc" id="L74">        phone = source.getPhone().value;</span>
+<span class="fc" id="L75">        email = source.getEmail().value;</span>
+<span class="fc" id="L76">        address = source.getAddress().value;</span>
+<span class="fc" id="L77">        type = source.getType().value;</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (type == TYPE_LEAD) {</span>
+<span class="fc" id="L79">            Lead sourceLead = (Lead) source;</span>
+<span class="fc" id="L80">            keyMilestone = sourceLead.getKeyMilestone().value;</span>
+        }
+<span class="fc" id="L82">        meetingTime = source.getMeetingTime().map(MeetingTime::toString).orElse(null);</span>
+<span class="fc" id="L83">        tags.addAll(source.getTags().stream()</span>
+<span class="fc" id="L84">                .map(JsonAdaptedTag::new)</span>
+<span class="fc" id="L85">                .collect(Collectors.toList()));</span>
+<span class="fc" id="L86">    }</span>
+
+    /**
+     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     *
+     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     */
+    public Person toModelType() throws IllegalValueException {
+<span class="fc" id="L94">        final List&lt;Tag&gt; personTags = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        for (JsonAdaptedTag tag : tags) {</span>
+<span class="fc" id="L96">            personTags.add(tag.toModelType());</span>
+<span class="fc" id="L97">        }</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (name == null) {</span>
+<span class="fc" id="L100">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));</span>
+        }
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (!Name.isValidName(name)) {</span>
+<span class="fc" id="L103">            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);</span>
+        }
+<span class="fc" id="L105">        final Name modelName = new Name(name);</span>
+
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (phone == null) {</span>
+<span class="fc" id="L108">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));</span>
+        }
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        if (!Phone.isValidPhone(phone)) {</span>
+<span class="fc" id="L111">            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);</span>
+        }
+<span class="fc" id="L113">        final Phone modelPhone = new Phone(phone);</span>
+
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (email == null) {</span>
+<span class="fc" id="L116">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));</span>
+        }
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (!Email.isValidEmail(email)) {</span>
+<span class="fc" id="L119">            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);</span>
+        }
+<span class="fc" id="L121">        final Email modelEmail = new Email(email);</span>
+
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (address == null) {</span>
+<span class="fc" id="L124">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));</span>
+        }
+<span class="fc bfc" id="L126" title="All 2 branches covered.">        if (!Address.isValidAddress(address)) {</span>
+<span class="fc" id="L127">            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);</span>
+        }
+<span class="fc" id="L129">        final Address modelAddress = new Address(address);</span>
+
+        final Optional&lt;MeetingTime&gt; modelMeetingTime;
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (meetingTime == null) {</span>
+<span class="fc" id="L133">            modelMeetingTime = Optional.empty();</span>
+        } else {
+<span class="fc bfc" id="L135" title="All 2 branches covered.">            if (!MeetingTime.isValidMeetingTime(meetingTime)) {</span>
+<span class="fc" id="L136">                throw new IllegalValueException(MeetingTime.MESSAGE_CONSTRAINTS);</span>
+            }
+<span class="fc" id="L138">            modelMeetingTime = Optional.of(new MeetingTime(meetingTime));</span>
+        }
+
+<span class="fc" id="L141">        final Set&lt;Tag&gt; modelTags = new HashSet&lt;&gt;(personTags);</span>
+
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        if (type == null) {</span>
+<span class="fc" id="L144">            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, &quot;Type&quot;));</span>
+        }
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        if (type.equals(TYPE_CLIENT)) {</span>
+<span class="fc" id="L147">            return new Client(modelName, modelPhone, modelEmail, modelAddress, modelMeetingTime, modelTags);</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        } else if (type.equals(TYPE_LEAD)) {</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            if (!KeyMilestone.isValidKeyMilestone(keyMilestone)) {</span>
+<span class="fc" id="L150">                throw new IllegalValueException(KeyMilestone.MESSAGE_CONSTRAINTS);</span>
+            }
+<span class="fc" id="L152">            final KeyMilestone modelKeyMilestone = new KeyMilestone(keyMilestone);</span>
+<span class="fc" id="L153">            return new Lead(modelName, modelPhone, modelEmail, modelAddress, modelKeyMilestone,</span>
+                    modelMeetingTime, modelTags);
+        } else {
+<span class="fc" id="L156">            throw new IllegalValueException(Type.MESSAGE_CONSTRAINTS);</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

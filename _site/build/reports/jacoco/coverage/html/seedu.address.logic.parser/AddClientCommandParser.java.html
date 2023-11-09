@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddClientCommandParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.parser</a> &gt; <span class="el_source">AddClientCommandParser.java</span></div><h1>AddClientCommandParser.java</h1><pre class="source lang-java linenums">package seedu.address.logic.parser;
+
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEETING_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
+
+import seedu.address.logic.commands.AddClientCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Client;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.MeetingTime;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
+
+/**
+ * Parses input arguments and creates a new AddClientCommand object
+ */
+<span class="fc" id="L28">public class AddClientCommandParser implements Parser&lt;AddClientCommand&gt; {</span>
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddClientCommand
+     * and returns an AddClientCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddClientCommand parse(String args) throws ParseException {
+<span class="fc" id="L36">        ArgumentMultimap argMultimap =</span>
+<span class="fc" id="L37">                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,</span>
+                        PREFIX_ADDRESS, PREFIX_MEETING_TIME, PREFIX_TAG);
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">                || !argMultimap.getPreamble().isEmpty()) {</span>
+<span class="fc" id="L42">            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddClientCommand.MESSAGE_USAGE));</span>
+        }
+
+<span class="fc" id="L45">        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,</span>
+                PREFIX_ADDRESS, PREFIX_MEETING_TIME);
+<span class="fc" id="L47">        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());</span>
+<span class="fc" id="L48">        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());</span>
+<span class="fc" id="L49">        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());</span>
+<span class="fc" id="L50">        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        Optional&lt;MeetingTime&gt; meetingTime = argMultimap.getValue(PREFIX_MEETING_TIME).isPresent()</span>
+<span class="fc" id="L52">                ? Optional.of(ParserUtil.parseMeetingTime(argMultimap.getValue(PREFIX_MEETING_TIME).get()))</span>
+<span class="fc" id="L53">                : Optional.empty();</span>
+<span class="fc" id="L54">        Set&lt;Tag&gt; tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));</span>
+
+        // TODO: temporary fix, implement add Client and Lead commands
+<span class="fc" id="L57">        Client client = new Client(name, phone, email, address, meetingTime, tagList);</span>
+
+<span class="fc" id="L59">        return new AddClientCommand(client);</span>
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+<span class="fc" id="L67">        return Stream.of(prefixes).allMatch(prefix -&gt; argumentMultimap.getValue(prefix).isPresent());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

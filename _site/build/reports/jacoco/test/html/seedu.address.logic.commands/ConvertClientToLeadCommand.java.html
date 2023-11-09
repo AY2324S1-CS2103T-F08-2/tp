@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConvertClientToLeadCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.commands</a> &gt; <span class="el_source">ConvertClientToLeadCommand.java</span></div><h1>ConvertClientToLeadCommand.java</h1><pre class="source lang-java linenums">package seedu.address.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.person.KeyMilestone.DATE_FORMAT;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Client;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.KeyMilestone;
+import seedu.address.model.person.Lead;
+import seedu.address.model.person.MeetingTime;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
+
+
+/**
+ * Converts a Client to a Lead in the address book.
+ */
+public class ConvertClientToLeadCommand extends Command {
+    public static final String COMMAND_WORD = &quot;converttolead&quot;;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + &quot;: Converts a client to a lead by the index &quot;
+            + &quot;number used in the displayed person list. \n&quot;
+            + &quot;Parameters: INDEX (must be a positive integer)\n&quot;
+            + &quot;Example: &quot; + COMMAND_WORD + &quot; 1&quot;;
+
+    public static final String MESSAGE_CONVERT_SUCCESS = &quot;Converted Client to Lead: %1$s&quot;;
+    public static final String MESSAGE_CONVERT_FAILURE = &quot;The person at the specified index is not a Client.&quot;;
+
+    private final Index index;
+
+    /**
+     * Creates an ConvertClientToLeadCommand to convert the specified {@code Client} to {@code Lead}
+     */
+<span class="fc" id="L50">    public ConvertClientToLeadCommand(Index index) {</span>
+<span class="fc" id="L51">        requireNonNull(index);</span>
+<span class="fc" id="L52">        this.index = index;</span>
+<span class="fc" id="L53">    }</span>
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+<span class="fc" id="L57">        requireNonNull(model);</span>
+<span class="fc" id="L58">        List&lt;Person&gt; lastShownList = model.getFilteredPersonList();</span>
+<span class="fc" id="L59">        System.out.println(lastShownList);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (index.getZeroBased() &gt;= lastShownList.size()) {</span>
+<span class="fc" id="L61">            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);</span>
+        }
+
+<span class="fc" id="L64">        Person personToConvert = lastShownList.get(index.getZeroBased());</span>
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (!(personToConvert instanceof Client)) {</span>
+<span class="fc" id="L67">            throw new CommandException(&quot;The person at the specified index is not a Client.&quot;);</span>
+        }
+
+<span class="fc" id="L70">        Name name = personToConvert.getName();</span>
+<span class="fc" id="L71">        Phone phone = personToConvert.getPhone();</span>
+<span class="fc" id="L72">        Email email = personToConvert.getEmail();</span>
+<span class="fc" id="L73">        Address address = personToConvert.getAddress();</span>
+        //todo: temporary fix for keyMilestone
+<span class="fc" id="L75">        LocalDate date = LocalDate.from(LocalDateTime.now());</span>
+
+<span class="fc" id="L77">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);</span>
+<span class="fc" id="L78">        String formattedDate = date.plusYears(1).format(formatter);</span>
+<span class="fc" id="L79">        KeyMilestone keyMilestone = new KeyMilestone(formattedDate);</span>
+<span class="fc" id="L80">        Set&lt;Tag&gt; tags = new HashSet&lt;&gt;(personToConvert.getTags());</span>
+<span class="fc" id="L81">        Optional&lt;MeetingTime&gt; meetingTime = personToConvert.getMeetingTime();</span>
+
+
+<span class="fc" id="L84">        Lead convertedLead = new Lead(name, phone, email, address, keyMilestone, meetingTime, tags);</span>
+
+<span class="fc" id="L86">        model.setPerson(personToConvert, convertedLead);</span>
+<span class="fc" id="L87">        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);</span>
+<span class="fc" id="L88">        return new CommandResult(String.format(MESSAGE_CONVERT_SUCCESS, Messages.format(convertedLead)));</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if (other == this) {</span>
+<span class="nc" id="L94">            return true;</span>
+        }
+
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if (!(other instanceof ConvertClientToLeadCommand)) {</span>
+<span class="nc" id="L98">            return false;</span>
+        }
+
+<span class="fc" id="L101">        ConvertClientToLeadCommand otherConvertCommand = (ConvertClientToLeadCommand) other;</span>
+<span class="fc" id="L102">        return index.equals(otherConvertCommand.index);</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

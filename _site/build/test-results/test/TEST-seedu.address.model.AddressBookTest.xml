@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.model.AddressBookTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.005">
+  <properties/>
+  <testcase name="hasPerson_leadInAddressBook_returnsTrue()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="getPersonList_modifyList_throwsUnsupportedOperationException()" classname="seedu.address.model.AddressBookTest" time="0.001"/>
+  <testcase name="constructor()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="equalsMethodSameObject()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="hasPerson_nullPerson_throwsNullPointerException()" classname="seedu.address.model.AddressBookTest" time="0.001"/>
+  <testcase name="toStringMethod()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="hasPerson_clientInAddressBook_returnsTrue()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="resetData_withDuplicateClients_throwsDuplicatePersonException()" classname="seedu.address.model.AddressBookTest" time="0.001"/>
+  <testcase name="equalsMethodSamePersonsList()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="resetData_null_throwsNullPointerException()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="hasPerson_clientWithSameIdentityFieldsInAddressBook_returnsTrue()" classname="seedu.address.model.AddressBookTest" time="0.001"/>
+  <testcase name="resetData_withDuplicateLeads_throwsDuplicatePersonException()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="hasLead_leadWithSameIdentityFieldsInAddressBook_returnsTrue()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="resetData_withValidReadOnlyAddressBook_replacesData()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="equalsMethodDifferentPersonsList()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <testcase name="hasPerson_personNotInAddressBook_returnsFalse()" classname="seedu.address.model.AddressBookTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

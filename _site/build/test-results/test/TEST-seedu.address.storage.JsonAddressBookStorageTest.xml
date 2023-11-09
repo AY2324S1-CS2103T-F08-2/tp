@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.storage.JsonAddressBookStorageTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.022">
+  <properties/>
+  <testcase name="read_missingFile_emptyResult()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.001"/>
+  <testcase name="readAddressBook_invalidPersonAddressBook_throwDataLoadingException()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.007"/>
+  <testcase name="saveAddressBook_nullAddressBook_throwsNullPointerException()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.0"/>
+  <testcase name="saveAddressBook_nullFilePath_throwsNullPointerException()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.001"/>
+  <testcase name="readAddressBook_invalidAndValidPersonAddressBook_throwDataLoadingException()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.001"/>
+  <testcase name="readAndSaveAddressBook_allInOrder_success()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.008"/>
+  <testcase name="readAddressBook_nullFilePath_throwsNullPointerException()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.001"/>
+  <testcase name="read_notJsonFormat_exceptionThrown()" classname="seedu.address.storage.JsonAddressBookStorageTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file src/test/data/JsonAddressBookStorageTest/invalidPersonAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.storage.JsonAddressBookStorage readAddressBook
+INFO: Illegal values found in src/test/data/JsonAddressBookStorageTest/invalidPersonAddressBook.json: Names should only contain alphanumeric characters and spaces, and it should not be blank
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file src/test/data/JsonAddressBookStorageTest/invalidAndValidPersonAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.storage.JsonAddressBookStorage readAddressBook
+INFO: Illegal values found in src/test/data/JsonAddressBookStorageTest/invalidAndValidPersonAddressBook.json: Person's Type field is missing!
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file /var/folders/1j/vsxf1w2n7nbgx01pz_1cq15w0000gn/T/junit12218896523836462831/TempAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file /var/folders/1j/vsxf1w2n7nbgx01pz_1cq15w0000gn/T/junit12218896523836462831/TempAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file /var/folders/1j/vsxf1w2n7nbgx01pz_1cq15w0000gn/T/junit12218896523836462831/TempAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file src/test/data/JsonAddressBookStorageTest/notJsonFormatAddressBook.json found.
+Nov 08, 2023 1:32:44 AM seedu.address.commons.util.JsonUtil readJsonFile
+WARNING: Error reading from jsonFile file src/test/data/JsonAddressBookStorageTest/notJsonFormatAddressBook.json: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'not': was expecting 'null', 'true', 'false' or NaN
+ at [Source: not json format!
+; line: 1, column: 4]
+]]></system-err>
+</testsuite>

@@ -517,11 +517,6 @@ Example usage:
 
 ### Clear address book
 - What it does: Clears all entries from the address book.
-
-<box type="info" theme="warning">
-  This command will delete all the data from the address book. This command cannot be reversed. Proceed with caution.
-</box>
-
 - Command format: `clear`.
 - Precise expected output when the command succeeds:
 

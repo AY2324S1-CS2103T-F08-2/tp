@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.storage.JsonAdaptedPersonTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.008">
+  <properties/>
+  <testcase name="toModelType_validKeyMilestone_returnsPerson()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_leadWithInvalidKeyMilestone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.001"/>
+  <testcase name="toModelType_nullPhoneWithValidKeyMilestone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_nullEmail_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_nullMeetingTimeWithOtherPersonDetailsValid_returnsPerson()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidTags_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.003"/>
+  <testcase name="toModelType_nullName_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidMeetingTime_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.001"/>
+  <testcase name="toModelType_nullType_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidTagsWithValidKeyMilestone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.001"/>
+  <testcase name="toModelType_invalidAddress_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidPhone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidName_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidKeyMilestone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidEmail_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.001"/>
+  <testcase name="toModelType_validPersonDetails_returnsPerson()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_nullAddress_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_nullPhone_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <testcase name="toModelType_invalidType_throwsIllegalValueException()" classname="seedu.address.storage.JsonAdaptedPersonTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

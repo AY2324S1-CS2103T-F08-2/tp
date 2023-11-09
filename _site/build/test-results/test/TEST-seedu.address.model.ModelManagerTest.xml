@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="seedu.address.model.ModelManagerTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2023-11-07T17:32:44" hostname="Tees-MBP" time="0.003">
+  <properties/>
+  <testcase name="hasPerson_leadInAddressBook_returnsTrue()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setUserPrefs_nullUserPrefs_throwsNullPointerException()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="constructor()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="hasPerson_nullPerson_throwsNullPointerException()" classname="seedu.address.model.ModelManagerTest" time="0.001"/>
+  <testcase name="setGuiSettings_validGuiSettings_setsGuiSettings()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="equals()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setAddressBookFilePath_nullPath_throwsNullPointerException()" classname="seedu.address.model.ModelManagerTest" time="0.001"/>
+  <testcase name="hasPerson_clientInAddressBook_returnsTrue()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setUserPrefs_validUserPrefs_copiesUserPrefs()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setAddressBookFilePath_validPath_setsAddressBookFilePath()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="hasPerson_personNotInAddressBook_returnsFalse()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="getFilteredPersonList_modifyList_throwsUnsupportedOperationException()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <testcase name="setGuiSettings_nullGuiSettings_throwsNullPointerException()" classname="seedu.address.model.ModelManagerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

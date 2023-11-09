@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeleteMeetingCommandParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.logic.parser</a> &gt; <span class="el_source">DeleteMeetingCommandParser.java</span></div><h1>DeleteMeetingCommandParser.java</h1><pre class="source lang-java linenums">package seedu.address.logic.parser;
+
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.DeleteMeetingCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+/**
+ * Parses input arguments and creates a new DeleteMeetingCommand object
+ */
+<span class="fc" id="L12">public class DeleteMeetingCommandParser implements Parser&lt;DeleteMeetingCommand&gt; {</span>
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the DeleteMeetingCommand
+     * and returns a DeleteMeetingCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    @Override
+    public DeleteMeetingCommand parse(String args) throws ParseException {
+        try {
+<span class="fc" id="L22">            Index index = ParserUtil.parseIndex(args);</span>
+<span class="fc" id="L23">            return new DeleteMeetingCommand(index);</span>
+<span class="fc" id="L24">        } catch (ParseException pe) {</span>
+<span class="fc" id="L25">            throw new ParseException(</span>
+<span class="fc" id="L26">                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMeetingCommand.MESSAGE_USAGE), pe);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

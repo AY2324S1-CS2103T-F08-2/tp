@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Client.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp</a> &gt; <a href="index.source.html" class="el_package">seedu.address.model.person</a> &gt; <span class="el_source">Client.java</span></div><h1>Client.java</h1><pre class="source lang-java linenums">package seedu.address.model.person;
+
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.model.tag.Tag;
+
+/**
+ * Represents a Client in the address book.
+ */
+public class Client extends Person {
+    public static final String TYPE_CLIENT = &quot;client&quot;;
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Client(Name name, Phone phone, Email email, Address address,
+                  Optional&lt;MeetingTime&gt; meetingTime, Set&lt;Tag&gt; tags) {
+<span class="fc" id="L19">        super(name, phone, email, new Type(TYPE_CLIENT), address, meetingTime, tags);</span>
+<span class="fc" id="L20">    }</span>
+
+    @Override
+    public boolean isClient() {
+<span class="fc" id="L24">        return true;</span>
+    }
+
+    @Override
+    public boolean isLead() {
+<span class="fc" id="L29">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
