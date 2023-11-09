@@ -494,7 +494,7 @@ find: Finds all persons whose names contain any of the specified keywords (case-
 Parameters: KEYWORD [MORE_KEYWORDS]...
 Example: find alice bob charlie``
 
-<box type="info" theme="light">
+<box type="info">
 <ul>
   <li>The search is case-insensitive. e.g <code>John</code> will match <code>john</code>.</li>
   <li>Only full words will be matched e.g. <code>John</code> will not match <code>Johns</code>.</li>
