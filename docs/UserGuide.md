@@ -492,7 +492,8 @@ from current date to ensure a follow-up by the user.
 ```Invalid command format!
 find: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
 Parameters: KEYWORD [MORE_KEYWORDS]...
-Example: find alice bob charlie```
+Example: find alice bob charlie
+```
 
 <box type="info">
 <ul>
