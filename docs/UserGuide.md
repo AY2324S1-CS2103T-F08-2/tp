@@ -30,7 +30,7 @@ D.A.V.E. is here to enhance your advisory journey by simplifying information man
   - [Sort meeting time](#sort-meeting-time)
   - [Convert lead to client](#convert-lead-to-client)
   - [Convert client to lead](#convert-client-to-lead)
-  - [Locating person by name](#locating-person-by-name)
+  - [Locating persons by name](#locating-persons-by-name)
   - [Clear address book](#clear-address-book)
   - [Exit the program](#exit-the-program)
 - [FAQ](#faq)
