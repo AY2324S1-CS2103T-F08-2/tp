@@ -55,6 +55,8 @@
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-data-archiving": "[Proposed] Data archiving",
         "addclient-addlead-feature": "Addclient/Addlead feature",
+        "list-clients-and-leads-feature": "List clients and leads feature",
+        "convert-lead-to-client-and-client-to-lead": "Convert lead to client and client to lead",
         "proposed-add-meeting-time-feature": "[Proposed] Add Meeting Time feature",
         "proposed-sort-meeting-time-feature": "[Proposed] Sort Meeting Time feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
