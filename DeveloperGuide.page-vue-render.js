@@ -302,13 +302,13 @@ with(this){return _c('p',[_v("If the person is a "),_c('code',{pre:true,attrs:{"
 with(this){return _c('p',[_v("Given below is an example usage scenario and how "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("converttoclient")]),_v(" and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("converttolead")]),_v(" behaves at each step")])}
 },function anonymous(
 ) {
-with(this){return _c('div',{attrs:{"align":"center"}},[_c('img',{attrs:{"src":"/tp/diagrams/ConvertLeadToClientSequence.png","width":"900"}}),_v(" "),_c('p',[_v("After converttoclient command")])])}
+with(this){return _c('div',{attrs:{"align":"center"}},[_c('img',{attrs:{"src":"/tp/diagrams/ConvertLeadToClientSequence.png","width":"900"}})])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The following activity diagram shows what happens when a user executes "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("converttoclient")]),_v(":")])}
 },function anonymous(
 ) {
-with(this){return _c('div',{attrs:{"align":"center"}},[_c('img',{attrs:{"src":"/tp/diagrams/ConvertClientToLeadActivity.png","height":"300"}}),_v(" "),_c('p',[_v("After converttoclient command")])])}
+with(this){return _c('div',{attrs:{"align":"center"}},[_c('img',{attrs:{"src":"/tp/diagrams/ConvertClientToLeadActivity.png","height":"300"}})])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"sort-meeting-time-feature"}},[_v("Sort Meeting Time feature"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#sort-meeting-time-feature","onclick":"event.stopPropagation()"}})])}
@@ -593,6 +593,6 @@ with(this){return _c('h2',{attrs:{"id":"appendix-planned-enhancements"}},[_c('st
 with(this){return _c('ol',[_c('li',[_c('strong',[_v("Client Policy Management:")]),_v(" The current functionality falls short in allowing student financial advisors to monitor clients' policies and follow up as needed, as it lacks the ability to add, edit, and delete client policies.  To address this limitation, we intend to develop these features in the future, ensuring student financial advisors can efficiently manage policy-related tasks.")]),_v(" "),_c('li',[_c('strong',[_v("UI Messages:")]),_v(" The current UI displays messages that could be confusing for users without a technical background, such as "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("null")]),_v(" when no meeting time is added. To address this limitation, we could filter out the fields containing "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("null")]),_v(" so the user does not see them.")]),_v(" "),_c('li',[_c('strong',[_v("Corrupted Data Files:")]),_v(" The current application displays an empty address book when an error parsing the data file occurs. The error messages are sent in the console, which may be confusing for users without a technical background. To address this limitation, we could add a clear message to be displayed when the application is launched, including information like what the error is and where the error occurred.")]),_v(" "),_c('li',[_c('strong',[_v("Repeated Names:")]),_v(" The current application does not allow users to add persons with identical names. While this is unlikely to happen in normal usage, it is still possible, and thus this behavior unnecessarily restricts users. To address this limitation, we could create a pop-up dialog informing users that such a person already exists, and requiring them to check and confirm before adding the new person.")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.1.0")]),_v(", generated on Mon, 13 Nov 2023, 21:49:41 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.1.0")]),_v(", generated on Mon, 13 Nov 2023, 23:09:09 GMT+8]")])])])}
 }];
   
